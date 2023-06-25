@@ -1,6 +1,7 @@
-import ToolBar from "@/components/ToolBar";
+import ToolBar from "./components/ToolBar";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import ProviderCustom from "./components/provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +18,7 @@ export default function RootLayout({ children }) {
           <div className="h-screen w-[300px] bg-black p-10">
             <ToolBar />
           </div>
-          {children}
+          <ProviderCustom>{children}</ProviderCustom>
         </div>
       </body>
     </html>

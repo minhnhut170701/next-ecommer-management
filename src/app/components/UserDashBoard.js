@@ -4,7 +4,7 @@ import { BsTrashFill } from "react-icons/bs";
 import React, { useEffect, useState } from "react";
 import ModalAdd from "./ModalAdd";
 
-function ProductDashBoard({ productData }) {
+function UserDashboard({ productData }) {
   const [checkedRows, setCheckedRows] = useState([]);
   const [isCheckedForTable, setIsCheckedForTable] = useState(false);
   const onChecked = (e, id) => {
@@ -47,11 +47,11 @@ function ProductDashBoard({ productData }) {
 
         <button className="p-4 bg-blue-500 text-white">Tìm kiếm</button>
 
-        <label htmlFor="my-modal-4" className="p-4 bg-red-500 text-white">
+        <label htmlFor="my-modal-1" className="p-4 bg-green-400 text-white">
           Thêm
         </label>
-        <input type="checkbox" id="my-modal-4" className="modal-toggle" />
-        <label htmlFor="my-modal-4" className="modal cursor-pointer">
+        <input type="checkbox" id="my-modal-1" className="modal-toggle" />
+        <label htmlFor="my-modal-1" className="modal cursor-pointer">
           <label className="modal-box relative max-w-[800px]" htmlFor="">
             <ModalAdd />
           </label>
@@ -65,10 +65,9 @@ function ProductDashBoard({ productData }) {
             <thead>
               <tr>
                 <th></th>
-                <th>Sản phẩm</th>
-                <th>Giá</th>
-                <th>Số lượng</th>
-                <th>Mô tả</th>
+                <th>Tên người dùng</th>
+                <th>Email</th>
+                <th>CartID</th>
                 {isCheckedForTable && <th>Xóa</th>}
               </tr>
             </thead>
@@ -91,33 +90,19 @@ function ProductDashBoard({ productData }) {
                     <td>
                       <div className="flex items-center space-x-6">
                         <Image
-                          src={item.banner[0]}
-                          alt={item.productName}
+                          src="https://images.unsplash.com/photo-1661956600655-e772b2b97db4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80"
+                          alt={item.userName}
                           width={300}
                           height={300}
                           className="object-cover w-[50px] h-[50px]"
                         />
-
-                        <div>
-                          <p className="font-bold w-48 whitespace-normal line-clamp-1">
-                            {item.productName}
-                          </p>
-                        </div>
+                        <p>{item.userName}</p>
                       </div>
                     </td>
-                    <td>
-                      Zemlak, Daniel and Leannon
-                      <br />
-                      <span className="badge badge-ghost badge-sm">
-                        Desktop Support Technician
-                      </span>
-                    </td>
-                    <td>Purple</td>
-                    <th>
-                      <button className="btn btn-ghost btn-xs">details</button>
-                    </th>
+                    <td>{item.email}</td>
+                    <td>{item.cart[0]}</td>
                     {isChecked && (
-                      <th>
+                      <td>
                         <label htmlFor="my-modal-4" className="btn">
                           <BsTrashFill />
                         </label>
@@ -138,8 +123,8 @@ function ProductDashBoard({ productData }) {
                               Bạn có chắc muốn xóa?
                             </h3>
                             <p className="py-4">
-                              Sau khi chấp nhận, sản phẩm sẽ xóa vĩnh viễn khỏi
-                              web
+                              Sau khi chấp nhận, người dùng sẽ xóa vĩnh viễn
+                              khỏi web
                             </p>
                             <div className="flex items-center justify-end space-x-5">
                               <div className="modal-action mt-0">
@@ -151,13 +136,13 @@ function ProductDashBoard({ productData }) {
                                 </label>
                               </div>
 
-                              <button className="p-2 bg-green-400 text-white rounded-md">
+                              <button className="p-2 bg-red-400 text-white rounded-md">
                                 Chấp nhận
                               </button>
                             </div>
                           </label>
                         </label>
-                      </th>
+                      </td>
                     )}
                   </tr>
                 );
@@ -167,10 +152,9 @@ function ProductDashBoard({ productData }) {
             <tfoot>
               <tr>
                 <th></th>
-                <th>Name</th>
-                <th>Job</th>
-                <th>Favorite Color</th>
-                <th></th>
+                <th>Tên người dùng</th>
+                <th>Email</th>
+                <th>CartID</th>
                 {isCheckedForTable && <th className=" text-black">Xóa</th>}
               </tr>
             </tfoot>
@@ -181,4 +165,4 @@ function ProductDashBoard({ productData }) {
   );
 }
 
-export default ProductDashBoard;
+export default UserDashboard;
