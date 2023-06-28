@@ -27,7 +27,7 @@ function ModalAdd() {
         console.log("data nè: ", data)
       }
     } catch (error) {
-      
+      console.log('error nè: ', error)
     }
   }
 
