@@ -10,6 +10,7 @@ function ProductDashBoard() {
   const [checkedRows, setCheckedRows] = useState([]);
   const [isCheckedForTable, setIsCheckedForTable] = useState(false);
   const { message, data, isSuccess } = useSelector((state) => state.product);
+  const [isModal, setIsModal] = useState(false)
   const dispatch = useDispatch();
   const onChecked = (e, id) => {
     
@@ -79,15 +80,16 @@ function ProductDashBoard() {
 
         <button className="p-4 bg-blue-500 text-white">Tìm kiếm</button>
 
-        <label htmlFor="my-modal-1" className="p-4 bg-green-400 text-white">
+        <label htmlFor="my-modal-1" className="p-4 bg-green-400 text-white" onClick={() => setIsModal(true)}>
           Thêm
         </label>
         <input type="checkbox" id="my-modal-1" className="modal-toggle" />
-        <label htmlFor="my-modal-1" className="modal cursor-pointer">
+        {isModal ?  <label htmlFor="my-modal-1" className="modal cursor-pointer">
           <label className="modal-box relative max-w-[800px]" htmlFor="">
-            <ModalAdd />
+            <ModalAdd isModal={isModal} setIsModal={setIsModal} />
           </label>
-        </label>
+        </label> : <></>}
+        
       </div>
       {/* table */}
       <div className="mt-10 max-w-[1150px] w-full">

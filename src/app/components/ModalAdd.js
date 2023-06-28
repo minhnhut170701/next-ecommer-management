@@ -1,7 +1,9 @@
 "use client";
+import { getProduct } from "@/feature/Product/ProductSlice";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
-function ModalAdd() {
+function ModalAdd({isModal, setIsModal}) {
   const [formData, setFormData] = useState({
     productName: '',
     price: '',
@@ -12,6 +14,7 @@ function ModalAdd() {
     description: '',
     photo: ''
   })
+  const dispatch = useDispatch()
   const handleSubmit = async (e) =>{
     e.preventDefault()
     try {
@@ -25,11 +28,13 @@ function ModalAdd() {
 
       const data = await response.json();
       if(data){
-        console.log("data nè: ", data)
+        dispatch(getProduct())
       }
     } catch (error) {
       console.log('error nè: ', error)
     }
+
+    setIsModal(false)
   }
 
   const changeImage = (e) =>{
