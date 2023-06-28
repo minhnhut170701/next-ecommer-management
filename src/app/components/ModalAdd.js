@@ -13,6 +13,7 @@ function ModalAdd() {
     photo: ''
   })
   const handleSubmit = async (e) =>{
+    e.preventDefault()
     try {
       const response = await fetch('https://nextjs13-ecommerce.onrender.com/api/product/create', {
         method: 'POST',
